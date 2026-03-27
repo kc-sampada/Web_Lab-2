@@ -1,5 +1,5 @@
-// ========== var, let, const ==========
-var city = "Kathmandu";       // function scoped, can be redeclared
+console.log(" var, let, const ");
+var city = "Lalitpur";       // function scoped, can be redeclared
 let age = 20;                 // block scoped, can be reassigned
 const college = "KEC";        // block scoped, cannot be reassigned
 
@@ -9,35 +9,35 @@ age = 21;                     // allowed
 console.log(city, age, college);
 
 
-// ========== Regular Function ==========
+console.log("Function ");
 function greet(name) {
     return "Hello, " + name + "!";
 }
 console.log(greet("Sampada"));
 
 
-// ========== Arrow Function ==========
+console.log("Arrow Function");
 const square = (n) => n * n;
-console.log(square(5));       // 25
+console.log(square(5));
 
 const add = (a, b) => a + b;
-console.log(add(3, 4));       // 7
+console.log(add(3, 4));
 
 
-// ========== Object ==========
+console.log("Object");
 const student = {
     name: "Sampada",
     age: 20,
     college: "KEC",
-    introduce: function() {
-        return "I am " + this.name + " from " + this.college;
+    introduce() {
+        return "I am " + this.name + " from " + this.college;;
     }
 };
 console.log(student.name);
 console.log(student.introduce());
 
 
-// ========== Map ==========
+console.log( "Map");
 // creates a NEW array by transforming each element
 const numbers = [1, 2, 3, 4, 5];
 const doubled = numbers.map(n => n * 2);
@@ -48,23 +48,23 @@ const upper = fruits.map(f => f.toUpperCase());
 console.log(upper);           // ['APPLE', 'BANANA', 'MANGO']
 
 
-// ========== Filter ==========
+console.log("Filter");
 // creates a NEW array with elements that pass the condition
 const greaterThan20 = [10, 25, 5, 40, 15].filter(n => n > 20);
-console.log(greaterThan20);   // [25, 40]
+console.log(greaterThan20);                // [25, 40]
 
-const evenNumbers = numbers.filter(n => n % 2 === 0);
-console.log(evenNumbers);     // [2, 4]
+const evenNumbers = numbers.filter(n => n % 2 === 0); console.log(evenNumbers);      // [2, 4]
 
 
-// ========== Spread Operator ==========
-// expands array/object elements
+console.log("Spread Operator");
+
+// expands array/object elements 
 const arr1 = [1, 2, 3];
 const arr2 = [4, 5, 6];
 const combined = [...arr1, ...arr2];
-console.log(combined);        // [1, 2, 3, 4, 5, 6]
+console.log(combined);         // [1, 2, 3, 4, 5, 6]
 
-// copying an object with spread
-const original = { name: "Sampada", age: 20 };
-const copy = { ...original, college: "KEC" };
-console.log(copy);            // { name: 'Sampada', age: 20, college: 'KEC' }
+// copying an object with spread 
+ const original = { name: "Sampada", age: 20 };
+ const copy = { ...original, college: "KEC" };
+ console.log(copy);          // { name: 'Sampada', age: 20, college: 'KEC'}

@@ -1,24 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intro to JavaScript</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Intro to JavaScript</title>
+<style>
+    body {
+        font-family: Arial;
+        background: #dbe2e479;
+        padding: 20px;
+        max-width: 860px;
+        margin: 0 auto;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    h2 {
+        margin-top: 30px;
+        color: #0e2a4f;
+    }
+
+    .code {
+        background: #d5d6d8;
+        color: #07233b;
+        padding: 15px;
+        border-radius: 6px;
+        font-family: monospace;
+        white-space: pre;
+        overflow-x: auto;
+        line-height: 1.6;
+    }
+
+    .comment { color: #4a5568; }
+    .keyword { color: #0b5394; font-weight: bold; }
+    .string  { color: #38761d; }
+    .number  { color: #c0392b; }
+
+    .output {
+        background: #f4b6cf56;
+        color: #6f7493;
+        border-radius:3px;
+        padding: 0.01%;
+    }
+</style>
 </head>
+
 <body>
-    <h1>Lab 2: Introduction to JavaScript</h1>
-    <p>Topics covered:</p>
-    <ul>
-        <li>var, let, const</li>
-        <li>Functions</li>
-        <li>Arrow Functions</li>
-        <li>Objects</li>
-        <li>Map</li>
-        <li>Filter</li>
-        <li>Spread Operator</li>
-    </ul>
-    <p>Open the browser console to see output.</p>
-    <p><strong>Right-click → Inspect(Q) → Console for the output.</strong></p>
-    <script src="index.js"></script>
+
+<h1>Lab 2: JavaScript Concepts</h1>
+<div class="output">
+<p><strong>Right-click → Inspect(Q) → Console for the output.</strong></p>
+</div>
+
+<h2>var, let, const</h2>
+<div class="code"><span class="keyword">var</span>   city    = <span class="string">"Kathmandu"</span>;  <span class="comment">// function scoped, can be redeclared</span>
+<span class="keyword">let</span>   age     = <span class="number">20</span>;           <span class="comment">// block scoped, can be reassigned</span>
+<span class="keyword">const</span> college = <span class="string">"KEC"</span>;        <span class="comment">// block scoped, cannot be reassigned</span>
+
+age = <span class="number">21</span>;                        <span class="comment">// allowed</span>
+<span class="comment">// college = "TU";             // ERROR: cannot reassign const</span>
+
+console.log(city, age, college);</div>
+
+<h2>Function</h2>
+<div class="code"><span class="keyword">function</span> greet(name) {
+    <span class="keyword">return</span> <span class="string">"Hello, "</span> + name + <span class="string">"!"</span>;
+}
+console.log(greet(<span class="string">"Sampada"</span>));</div>
+
+<h2>Arrow Function</h2>
+<div class="code"><span class="keyword">const</span> square = (n) =&gt; n * n;
+console.log(square(<span class="number">5</span>));   
+
+<span class="keyword">const</span> add = (a, b) =&gt; a + b;
+console.log(add(<span class="number">3</span>, <span class="number">4</span>));     
+</div>
+
+<h2>Object</h2>
+<div class="code"><span class="keyword">const</span> student = {
+    name:      <span class="string">"Sampada"</span>,
+    age:       <span class="number">20</span>,
+    college:   <span class="string">"KEC"</span>,
+    introduce: <span class="keyword">function</span>() {
+        <span class="keyword">return</span> <span class="string">"I am "</span> + <span class="keyword">this</span>.name + <span class="string">" from "</span> + <span class="keyword">this</span>.college;
+    }
+};
+console.log(student.name);
+console.log(student.introduce());</div>
+
+<h2>Map</h2>
+<div class="code"><span class="comment">// creates a NEW array by transforming each element</span>
+<span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
+<span class="keyword">const</span> doubled = numbers.map(n =&gt; n * <span class="number">2</span>);
+console.log(doubled);     <span class="comment">// [2, 4, 6, 8, 10]</span>
+
+<span class="keyword">const</span> fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"mango"</span>];
+<span class="keyword">const</span> upper  = fruits.map(f =&gt; f.toUpperCase());
+console.log(upper);       <span class="comment">// ['APPLE', 'BANANA', 'MANGO']</span></div>
+
+<h2>Filter</h2>
+<div class="code"><span class="comment">// creates a NEW array with elements that pass the condition</span>
+<span class="keyword">const</span> greaterThan20 = [<span class="number">10</span>, <span class="number">25</span>, <span class="number">5</span>, <span class="number">40</span>, <span class="number">15</span>].filter(n =&gt; n &gt; <span class="number">20</span>);
+console.log(greaterThan20);  <span class="comment">// [25, 40]</span>
+
+<span class="keyword">const</span> evenNumbers = numbers.filter(n =&gt; n % <span class="number">2</span> === <span class="number">0</span>);
+console.log(evenNumbers);    <span class="comment">// [2, 4]</span></div>
+
+<h2>Spread</h2>
+<div class="code"><span class="keyword">const</span> arr1     = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
+<span class="keyword">const</span> arr2     = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];
+<span class="keyword">const</span> combined = [...arr1, ...arr2];
+console.log(combined);       <span class="comment">// [1, 2, 3, 4, 5, 6]</span>
+
+<span class="comment">// copying an object with spread</span>
+<span class="keyword">const</span> original = { name: <span class="string">"Sampada"</span>, age: <span class="number">20</span> };
+<span class="keyword">const</span> copy      = { ...original, college: <span class="string">"KEC"</span> };
+console.log(copy);           <span class="comment">// { name: 'Sampada', age: 20, college: 'KEC' }</span></div>
+
+<script src="index.js"></script>
+
 </body>
 </html>
